@@ -173,6 +173,15 @@ class Streeng
 			$string = ucfirst($string);
 		}
 
+		// Initial letters (of each word)
+		$initials = ee()->TMPL->fetch_param('initials');
+
+		if ($initials === 'yes') {
+			$words = preg_split("/\s+/", $string);
+			$string = "";
+			foreach($words as $word) $string .= $word[0];
+		}
+
 		// Title case
 		$title = ee()->TMPL->fetch_param('title');
 
